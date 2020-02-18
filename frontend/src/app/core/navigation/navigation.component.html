@@ -1,4 +1,5 @@
 
+<!--he main navigation bar on top-->
 <div>
   <nav  class="navbar navbar-inverse bgcolor navcont ">
       <div class="container-fluid">
@@ -14,13 +15,12 @@
             <ul class="bgsecond dropdown-menu">
               <li class="navmenu"><a  routerLink="/gallery">Gallery</a></li>
               <li class="navmenu"><a routerLink="/stuff">About us</a></li>
-              <li class="navmenu"><a routerLink="#">Services</a></li>
+              <li class="navmenu"><a routerLink="/home">Services</a></li>
               <li class="navmenu"><a routerLink="/contact">Contacts</a></li>
               <li class="navmenu promo"><a routerLink="/promotions">Promotions</a></li>
               
             </ul>
           </li>
-          
           <li *ngIf="isLogged">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-home"></span> My Account<span class="caret"></span></a>
               <ul class="bgsecond dropdown-menu">

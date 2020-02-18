@@ -1,6 +1,6 @@
 
 
-/***Interface for pursons working in saloon */
+/***Interface for persons working in saloon */
 export interface  IStuff{
 	id:number,
 	name:string,
@@ -9,6 +9,6 @@ export interface  IStuff{
 	description:string,
 	userid:number,
     workhours:string,
-    likes:number,
+    likes:number,   
 	dislikes:number
 }

@@ -12,17 +12,19 @@ import { IPromotion } from '../core/interfaces/IPromotion';
 export class PromoComponent extends ComponentBase implements OnInit {
 
   promotions : IPromotion[];
+  
 
   constructor(private uservice : UserService,
     private promoService:PromoService) {
     super(uservice);
    }
 
+  /***calc new price with discount */
   calcPrice( promo:IPromotion){
     return promo.procedure.price - ((promo.dicscount/100)*promo.procedure.price);
   }
-
-
+  
+  
   isExpired(promo:IPromotion){
     return promo.expiredate < new Date();
   }

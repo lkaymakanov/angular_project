@@ -1,15 +1,24 @@
 
+<!-- shown only in debug-->
+<div *ngIf="isDebug" class="debug">
+  <p> isRegErr: {{isRegErr}}</p>
+  <p>regErrTxt : {{regErr}} </p>
+</div>
+
+
+<ng-container *ngIf="!isLogged">
 <div class=" w-100">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
               <h1 class="text-italic">Register</h1>
               <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+                <p *ngIf="isDebug"> regFormValue : {{registerForm.value | json}}</p>
                 <div class="form-group">
                   <label for="email">Email address</label>
                   <input #emailInput="ngModel" type="text" ngModel name="email" id="email" class="form-control"
                     placeholder="john.doe@domain.bg" pattern="[a-zA-Z0-9.-_]{6,}@abv\.bg" required>
-                  <p class="error-message" *ngIf="emailInput.invalid && emailInput.touched">Please enter valid abv.bg email!</p>
+                  <p class="error-msg" *ngIf="emailInput.invalid && emailInput.touched">Please enter valid abv.bg email!</p>
                 </div>
                 <div #passwordsGroup="ngModelGroup" ngModelGroup="passwords" appPasswordMatch>
                   <div class="form-group">
@@ -25,7 +34,8 @@
                       [ngClass]="{ 'password-match-invalid': passwordsGroup.invalid, 'password-match-touched': passwordsGroup.touched }"
                       type="password" name="rePassword" id="rePassword" class="form-control" placeholder="************" required>
                   </div>
-                  <p class="error-message" *ngIf="passwordsGroup.touched && passwordsGroup.invalid">Passwords don't match!</p>
+                  <p class="error-msg" *ngIf="passwordsGroup.touched && passwordsGroup.invalid">Passwords don't match!</p>
+                  <p class="error-msg" *ngIf="isRegErr">{{regErr}}!</p>
                 </div>
                 <button type="submit" class="btnmain bgcolor  btn btn-success">Register</button>
               </form>
@@ -33,4 +43,4 @@
             </div>
         </div>
 </div>
-
+</ng-container>

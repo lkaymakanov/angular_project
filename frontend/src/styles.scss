@@ -8,9 +8,20 @@
     margin-bottom: 30px;
 }
 
+p.error-msg{
+    color: red;
+    border-bottom: 2px solid red;
+  
+}
+
 .btn-main{
     padding: 5px;
  
+}
+
+div.debug{
+    margin-left:50px;
+    font-size: 30px;
 }
 
 div.line-wrap{

@@ -38,7 +38,7 @@ export class UserService {
   //check if user is authenticated - hot observable
   authCompleted$ = this.http.post(this.getMainPath() +'/auth', '').pipe(shareReplay(1));
 
-  //return currebtly looged user
+  //return currently looged user
   get curUser():IUserdata{
     return this.currentUser;
   }
@@ -63,15 +63,15 @@ export class UserService {
   }
 
   //register
-  register(email: string, password: string) {
-    let mailpass : IUserMailPass = {email: email, pass:password};
+  register(mailpass:IUserMailPass) {
+    console.log(mailpass);
     return this.http.post(this.getMainPath() + '/register', mailpass);
   }
 
   //logout
   logoutUser( onSuccess?: () => any)   {
     let path = this.getMainPath() + '/logout';
-    console.log(path);
+    //console.log(path);
 
     return this.http.post(path, '').subscribe((el)=>{
       this.currentUser = null;

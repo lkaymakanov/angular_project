@@ -1,4 +1,10 @@
 
+<div *ngIf="isDebug" class="debug">
+  <p> loginerrTxt : {{loginErr}}</p>
+  <p> isloginErr: {{isLoginErr}}</p>
+  <p >isLogged : {{isLogged}} </p>
+
+</div>
 
 
 <ng-container *ngIf="!isLogged">
@@ -25,7 +31,7 @@
     </div>
 
     <button  class="btnmain bgcolor  btn btn-success">Login</button>
-    <p *ngIf="isError">{{loginError}}</p>
+    <p *ngIf="isLoginErr" class="error-msg">{{loginError}}</p>
   </form>
   <p>Don't have account yet? <a routerLink="/user/register">Register</a>.</p>
 </div>

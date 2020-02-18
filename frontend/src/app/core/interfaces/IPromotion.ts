@@ -1,9 +1,9 @@
 import { IProcedure } from './IProcedure';
 
-/***promotions interface*/
+/***Promotions interface*/
 export interface  IPromotion{
-	id:number,
-	expiredate:Date ,
-	procedure:IProcedure,
-	dicscount:number
+	id:number,              //primary key
+	expiredate:Date ,       //date to which promotion is valid
+	procedure:IProcedure,   //the procedure that is promoted
+	dicscount:number        //the discount
 }

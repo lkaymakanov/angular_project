@@ -1,72 +1,21 @@
 
+<div *ngIf="isDebug">
+    {{images|json}}
+
+</div>
 
 
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-10">
-            
-            <div class="gallery">
-                <a target="_blank" href="../../assets/saloon/sal-1.png">
-                <img src="../../assets/saloon/sal-1.png" alt="Cinque Terre" width="600" height="400">
+            <div *ngFor="let img of images" class="gallery">
+                <a target="_blank" [href]="img.imgsrc">
+                <img [src]="img.imgsrc" alt="Cinque Terre" width="600" height="400">
                 </a>
-                <div class="desc">Add a description of the image here</div>
+                <div class="desc">{{img.imgdesc}}</div>
             </div>
-            
-            <div class="gallery">
-                <a target="_blank" href="../../assets/saloon/sal-2.png">
-                <img src="../../assets/saloon/sal-2.png" alt="Forest" width="600" height="400">
-                </a>
-                <div class="desc">Add a description of the image here</div>
-            </div>
-            
-            <div class="gallery">
-                <a target="_blank" href="../../assets/saloon/sal-3.jpg">
-                <img src="../../assets/saloon/sal-3.jpg" alt="Northern Lights" width="600" height="400">
-                </a>
-                <div class="desc">Add a description of the image here</div>
-            </div>
-            
-            <div class="gallery">
-                <a target="_blank" href="../../assets/saloon/sal-4.jpg">
-                <img src="../../assets/saloon/sal-4.jpg" alt="Mountains" width="600" height="400">
-                </a>
-                <div class="desc">Add a description of the image here</div>
-            </div>
-
-            <div class="gallery">
-                <a target="_blank" href="../../assets/saloon/sal-5.jfif">
-                <img src="../../assets/saloon/sal-5.jfif" alt="Mountains" width="600" height="400">
-                </a>
-                <div class="desc">Add a description of the image here</div>
-            </div>
-            <div class="gallery">
-                <a target="_blank" href="../../assets/saloon/sal-6.jfif">
-                <img src="../../assets/saloon/sal-6.jfif" alt="Mountains" width="600" height="400">
-                </a>
-                <div class="desc">Add a description of the image here</div>
-            </div>
-            <div class="gallery">
-                <a target="_blank" href="../../assets/saloon/sal-7.jfif">
-                <img src="../../assets/saloon/sal-7.jfif" alt="Mountains" width="600" height="400">
-                </a>
-                <div class="desc">Add a description of the image here</div>
-            </div>
-            <div class="gallery">
-                <a target="_blank" href="../../assets/saloon/sal-8.jfif">
-                <img src="../../assets/saloon/sal-8.jfif" alt="Mountains" width="600" height="400">
-                </a>
-                <div class="desc">Add a description of the image here</div>
-            </div>
-            <div class="gallery">
-                <a target="_blank" href="../../assets/saloon/sal-9.jfif">
-                <img src="../../assets/saloon/sal-9.jfif" alt="Mountains" width="600" height="400">
-                </a>
-                <div class="desc">Add a description of the image here</div>
-            </div>
-
         </div>
-
     </div>
 </div>
 
