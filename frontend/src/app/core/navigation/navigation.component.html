@@ -1,0 +1,41 @@
+
+<div>
+  <nav  class="navbar navbar-inverse bgcolor navcont ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand navtitle" href="#"><i> Martina Lombardi	&trade;</i></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <!--
+          <li class="active"><a href="#">Home</a></li>
+          -->
+          <li class="active"  class="dropdown">
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="caret"></span> What we offer </a>
+            <ul class="bgsecond dropdown-menu">
+              <li class="navmenu"><a  href="/gallery">Gallery</a></li>
+              <li class="navmenu"><a routerLink="/stuff">About us</a></li>
+              <li class="navmenu"><a href="#">Services</a></li>
+              <li class="navmenu"><a routerLink="/contact">Contacts</a></li>
+              <li class="navmenu promo"><a href="/promotions">Promotions</a></li>
+              
+            </ul>
+          </li>
+          <li><a  href="#">Carreers</a></li>
+          <li *ngIf="isLogged">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-home"></span> My Account<span class="caret"></span></a>
+              <ul class="bgsecond dropdown-menu">
+                  <li><a routerLink="/user/profile">Profile</a></li>
+                  <li><a routerLink="/user/reservations">Reservations</a></li>
+                  <li><a routerLink="/user/payments">Payments</a></li>
+              </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="!isLogged"><a routerLink="/register"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+          <li *ngIf="!isLogged"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+          <li *ngIf="isLogged"><a routerLink="/" (click)="logout()" ><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  

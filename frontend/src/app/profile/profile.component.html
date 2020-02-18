@@ -1,0 +1,69 @@
+
+<ng-container *ngIf="debug">
+    <p>profile works!</p>
+    <p>IsLogged, {{isLogged}}</p>
+    <p class="header">Welcome, {{curUser | json}}</p>
+</ng-container>
+
+<div class="spacer" ></div>
+
+<div class="container" >
+    <div class="row bgcolor margin0">
+        <div class="col-md-10">
+            <p class="ptitle ">Welcome, {{curUser.username}}</p>
+        </div>
+        <div class="col-md-2"><p > <span class="glyphicon glyphicon-pencil profilpencil "></span></p></div>
+    </div>
+    <div class="row usrcontent" >
+        <div class="col-md-2">
+            <img class="usrimg" src='../../assets/user.jfif'/>    
+        </div>
+        <div  class="col-md-10">             
+            <div class="row">
+                <div class="col-md-12 margin0" style="padding: 0px;">
+                   <button class="btnmain bgcolor   btn btn-success" (click)="changepass=!changepass" >Change Pass</button>
+                </div>
+                <div class="row" *ngIf="changepass">
+                    <div class="col-md-7">
+                        <form #changePassForm="ngForm" (ngSubmit)="btnConfirmPass(changePassForm.value)">
+                            <div class="form-group">
+                                <label for="password">New Password</label>
+                                <input  #password="ngModel" required minlength="4" type="password" ngModel name="password" id="password"  class="form-control inok" placeholder="************">
+                            </div>
+                            <div class="form-group">
+                                <label for="rePassword">Re-NewPassword</label>
+                                <input  #repassword="ngModel" required minlength="4" type="password" ngModel name="repassword" id="repassword"  class="form-control inok" placeholder="************">
+                            </div>
+                            <button  class="btnmain bgcolor  btn btn-primary">Confirm new Pass!</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm.value)">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <div class="input-group">
+       <input #emailInput="ngModel" type="text" ngModel name="email" id="email" class="form-control inok"
+        placeholder="john.doe@domain.bg" [pattern]="emailRegex" required>
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        </div>
+        <p class="error-msg" *ngIf="emailInput?.errors?.pattern && emailInput.touched">Please enter valid gmail.com email!</p>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="input-group">
+        <input  #passwordInput="ngModel" required minlength="4" type="password" ngModel name="password" id="password"  class="form-control inok" placeholder="************">
+         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+       </div>
+      <p class="error-msg" *ngIf="passwordInput?.touched && passwordInput?.errors?.required">Please enter a password!</p>
+    </div>
+
+    <button  class="btnmain bgcolor  btn btn-success">Login</button>
+    <p *ngIf="isError">{{loginError}}</p>
+  </form>
+-->

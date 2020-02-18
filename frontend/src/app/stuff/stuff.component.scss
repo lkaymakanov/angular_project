@@ -1,0 +1,51 @@
+img.stuff{
+    border-radius: 45%;
+    width: 130px;
+    height: 130px;
+}
+
+div.container{
+    max-width: 800px;
+    color:red;
+}
+
+.panel-default{
+    border:solid 1px; position: relative;
+}
+
+div.stuffheader{
+    padding: 3px;
+    min-width: 180px;
+    height: 35px;
+    color:ghostwhite;
+    font-size: 22px;
+}
+
+.profession{
+    font-size: 30px;
+    color:gold;
+
+}
+
+div.stuff{
+    margin-right: 10px;
+}
+
+
+
+table.avatar th, td{
+    text-align: center;
+}
+
+div.stuff :hover{
+    opacity: 0.86;
+   
+}
+
+.stuff-contact{
+    float: right; color:green;
+}
+
+.stuff-foot{
+    position: absolute; bottom: 0px; right: 0px; color:red; width: 98%; height: 10px; background-color: black;
+}

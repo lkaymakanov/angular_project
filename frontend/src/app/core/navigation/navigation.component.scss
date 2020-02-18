@@ -1,0 +1,49 @@
+.navtitle{
+    font-size: 25px;
+    text-align: center;
+    color:goldenrod;
+    font-style: italic;
+
+}
+
+
+.navcont{
+    font-size: 18px;
+    color:indigo;
+}
+
+.navtitle  a:hover{
+    color:blue;
+
+}
+
+.career{
+    color:red;
+}
+
+
+
+ul.dropdown-menu{
+   border-radius: 10px; ;
+   font-size: medium;
+}
+
+
+
+.dropdown-menu>li.promo{
+    color:red !important;
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+
+.dropdown-menu>li>a:hover{
+    font-size: large;
+    font-weight: bold;
+    //color:gold !important;
+    font-style: italic;
+    background-color: yellowgreen ;
+}
+
+

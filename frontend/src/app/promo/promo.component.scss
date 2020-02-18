@@ -1,0 +1,41 @@
+.promocont{
+
+    padding: 15px;
+    font-size: larger;
+    font-weight: bold;
+    
+
+}
+
+
+.discount{
+    text-align: right;
+    font-weight: bold;
+    color:red;
+}
+
+
+
+.promotblhead{
+    border-bottom: solid 1px; 
+    padding-bottom:10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.txtright{
+    text-align: right;
+}
+
+.promotbl{
+   // padding: 16px;
+    width: 100%;
+}
+
+.promotbl tr td {
+    padding: 16px !important;
+}
+
+.promotbl tr:hover {
+    background-color: #7ba57b;
+}

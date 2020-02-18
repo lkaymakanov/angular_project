@@ -1,0 +1,18 @@
+
+
+<div  *ngFor="let g of procGroups">
+    <div class="container">
+        <div class="panel panel-default">
+        <div class="bgcolor panel-heading">
+            <div  class="groupheader bgcolor"> <span  style="color:white;" class="caret"> </span>  {{g.servicegroupname}}
+                
+            </div >
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <app-saloonproc [group]=g></app-saloonproc>
+                </div>
+            </div>
+    </div>
+</div>
+
+

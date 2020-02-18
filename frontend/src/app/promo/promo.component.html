@@ -1,0 +1,57 @@
+<p>promo works!</p>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            
+            
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class=" panel panel-default contact" >
+                            <div class="panel-heading bgcolor color:white;">
+                            <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> PROMOTIONS</div >
+                            </div>
+                            <div class="promocont">
+                                <table class="promotbl">
+                                    <tr class="promotblhead">
+                                        <td>Procedure</td>
+                                        <td class="txtright">New Price</td>
+                                        <td class="txtright">Discount</td>
+                                        
+                                    </tr>
+                                    <tr  *ngFor="let promo of promotions" >
+                                        <td>{{promo.procedure.name}}</td>
+                                        <td class="discount"> {{calcPrice(promo)}}lv.</td>
+                                        <td class="discount"> {{promo.dicscount}}% <span *ngIf="isExpired(promo)" >expired</span> </td>
+                                    </tr>
+                                </table>
+                            </div>
+<!--
+                            <div *ngFor="let promo of promotions">
+                                <div class="panel-body">
+                                    <div class="col-md-8">
+                                        {{promo.procedure.name}}
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{promo.procedure.price}}
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{promo.dicscount}}
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+
+                        
+                 </div>      
+                </div>
+            </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+

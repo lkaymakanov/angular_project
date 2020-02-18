@@ -1,0 +1,32 @@
+
+
+
+<ng-container *ngIf="!isLogged">
+<div class="col-md-4"></div>
+<div class="col-md-4">
+  <h1 class="text-italic">Login</h1>
+  <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm.value)">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <div class="input-group">
+       <input #emailInput="ngModel" type="text" ngModel name="email" id="email" class="form-control inok"
+        placeholder="john.doe@domain.bg" [pattern]="emailRegex" required>
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        </div>
+        <p class="error-msg" *ngIf="emailInput?.errors?.pattern && emailInput.touched">Please enter valid gmail.com email!</p>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="input-group">
+        <input  #passwordInput="ngModel" required minlength="4" type="password" ngModel name="password" id="password"  class="form-control inok" placeholder="************">
+         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+       </div>
+      <p class="error-msg" *ngIf="passwordInput?.touched && passwordInput?.errors?.required">Please enter a password!</p>
+    </div>
+
+    <button  class="btnmain bgcolor  btn btn-success">Login</button>
+    <p *ngIf="isError">{{loginError}}</p>
+  </form>
+  <p>Don't have account yet? <a routerLink="/user/register">Register</a>.</p>
+</div>
+</ng-container>

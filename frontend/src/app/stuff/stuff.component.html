@@ -1,0 +1,38 @@
+<p>stuff works!</p>
+
+<ng-container *ngIf="debug">
+{{stuff | json}}
+</ng-container>
+
+<div *ngFor="let s of stuff">
+    <div class="container">
+        <div class="panel panel-default">
+        <div class="bgcolor panel-heading">
+            <div  class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> {{s.name}}
+                <div style="float: right;">
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>{{s.likes}}
+                    </button>
+                    <button style="margin-left: 5px ;" type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>{{s.dislikes}}
+                    </button>
+                </div>
+            </div >
+        </div>
+
+        <div class="panel-body border: solid 2px;">
+            <img class="stuff" style="float:left; margin-right:20px ;" [src]= "imageUrl(s)" />
+            <div >
+            <h4>{{s.description}}</h4>
+            <div class="stuff-contact"> 
+                <h5>Telephone:{{s.phone}}</h5>
+                <h5>Work Time: {{s.workhours}}</h5>
+            </div>
+            </div>
+            <div class="stuff-foot">
+                
+            </div>
+        </div>
+        </div>
+    </div>  
+</div>
