@@ -13,6 +13,7 @@ import { PaymentsComponent } from './payments/payments.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PromoComponent } from './promo/promo.component';
 import { ContactComponent } from './contact/contact.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path: 'stuff',
     component: StuffComponent
+  },
+
+  {
+    path: 'gallery',
+    component: GalleryComponent
   },
 
   //saloon procdures component

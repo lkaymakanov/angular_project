@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginError=null;
 
   get loginErr(){
-    return this.loginError;
+    return this.loginError!=null;
   }
 
   get isLogged(){

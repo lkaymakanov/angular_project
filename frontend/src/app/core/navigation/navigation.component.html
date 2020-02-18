@@ -10,17 +10,17 @@
           <li class="active"><a href="#">Home</a></li>
           -->
           <li class="active"  class="dropdown">
-           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="caret"></span> What we offer </a>
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="caret"></span> Services & Others  </a>
             <ul class="bgsecond dropdown-menu">
-              <li class="navmenu"><a  href="/gallery">Gallery</a></li>
+              <li class="navmenu"><a  routerLink="/gallery">Gallery</a></li>
               <li class="navmenu"><a routerLink="/stuff">About us</a></li>
-              <li class="navmenu"><a href="#">Services</a></li>
+              <li class="navmenu"><a routerLink="#">Services</a></li>
               <li class="navmenu"><a routerLink="/contact">Contacts</a></li>
-              <li class="navmenu promo"><a href="/promotions">Promotions</a></li>
+              <li class="navmenu promo"><a routerLink="/promotions">Promotions</a></li>
               
             </ul>
           </li>
-          <li><a  href="#">Carreers</a></li>
+          
           <li *ngIf="isLogged">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-home"></span> My Account<span class="caret"></span></a>
               <ul class="bgsecond dropdown-menu">

@@ -20,6 +20,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PromoComponent } from './promo/promo.component';
 import { ContactComponent } from './contact/contact.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ContactComponent } from './contact/contact.component';
     ProfileComponent,
     PromoComponent,
     ContactComponent,
+    GalleryComponent,
     
   ],
   imports: [

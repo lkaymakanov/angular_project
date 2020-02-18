@@ -16,4 +16,8 @@ export class RegisterComponent implements OnInit {
     
   }
 
+  register(formVal : any){
+    console.log(formVal);
+  }
+
 }
