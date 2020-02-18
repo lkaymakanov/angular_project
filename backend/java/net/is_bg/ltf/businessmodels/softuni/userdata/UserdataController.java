@@ -69,6 +69,17 @@ import net.is_bg.ltf.jwt.JWTUtil;
  		return d!=null;
  	}
  	
+ 	@PostMapping(MAIN_PATH + "/register")
+ 	public Userdata register(@RequestBody UserMailPass emailPass, HttpServletResponse response) {
+ 		Userdata d = new Userdata();
+ 		d.setEmail(emailPass.getEmail()); d.setPassword(emailPass.getPass());
+ 		d.setUsername(emailPass.getEmail());
+ 		service.create(d);
+ 		d.setPassword(null);
+ 		return d;
+ 	}
+ 	
+ 	
  	@PostMapping(MAIN_PATH + AppConstants.LOGIN)
  	public Userdata login(@RequestBody UserMailPass emailPass, HttpServletResponse response) {
  		Userdata d =  service.login(emailPass.getEmail(), emailPass.getPass());

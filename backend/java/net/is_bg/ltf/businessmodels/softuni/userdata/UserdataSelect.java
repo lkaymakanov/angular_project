@@ -4,7 +4,6 @@
  import java.sql.ResultSet;
  import java.sql.SQLException;
 
-import net.is_bg.ltf.businessmodels.softuni.users.UsersSelect;
 import net.is_bg.ltf.db.common.paging.SelectPagingSqlStatement;
 import net.is_bg.ltf.jwt.Sha512;
  

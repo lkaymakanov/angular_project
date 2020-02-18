@@ -21,15 +21,41 @@ class App {
 	
 	//data bases url's
 	
-
+	private final static String URL_PGR_BRC = "digest:jdbc:postgresql://10.240.110.120:5432/brc";
+	private final static String URL_PGR_MDT = "digest:jdbc:postgresql://10.240.44.129:5432/mdt";
+	private final static String URL_ORC_SF_129 = "jdbc:oracle:thin:@10.240.44.129:1521:ORCL";
+	private final static String URL_ORC_SF_146 = "jdbc:oracle:thin:@10.240.44.146:1521:orcl";
+	private final static String URL_LOCAL = "jdbc:oracle:thin:@localhost:1521:ltf";
+	
+	private final static String URL_PGR_149 = "digest:jdbc:postgresql://10.240.44.149:5432/bnk4";
+	private final static String URL_PGR_LOCLHOST = "digest:jdbc:postgresql://localhost:5432/pdv";
+	private final static String URL_PDV = "jdbc:postgresql://10.240.110.70:5432/pdv";
+	private final static String URL_TETVEN = "digest:jdbc:postgresql://10.240.110.93:5432/teteven";
+	
+	
+	private final static String URL_IUIS = "jdbc:postgresql://10.240.110.90:5432/iuis";
 	//data base connections
 	public static ConnectionProperties [] dBases = {
-
-		new ConnectionProperties(PGR_DRIVER, "jdbc:postgresql://localhost:5432/soft", "postgres", "012345", "") ,                //0
+		new ConnectionProperties(ORCL_DRIVER, URL_ORC_SF_129, "brc", "brc", "orlc_brc_129"),  //0
+		new ConnectionProperties(ORCL_DRIVER, URL_ORC_SF_129, "krp", "krp", "orlc_krp_129"),  //1
+		new ConnectionProperties(ORCL_DRIVER, URL_ORC_SF_146, "brc", "brc", "orlc_brc_146"),  //2
+		new ConnectionProperties(ORCL_DRIVER, URL_ORC_SF_146, "sdk", "sdk", "orlc_sdk_146"),  //3
+		new ConnectionProperties(PGR_DRIVER, URL_PGR_BRC, "mdt", "mdt", "pgr_brc_129"),       //4
+		new ConnectionProperties(ORCL_DRIVER, URL_LOCAL, "brc", "brc", "pgr_brc_129") ,       //5
+		new ConnectionProperties(ORCL_DRIVER, URL_PGR_MDT, "mdt", "mdt", "pgr_mdt_129"),       //6
+		
+		new ConnectionProperties(PGR_DRIVER, URL_PGR_149, "bnk", "Bnk12345", "pgr_bnk_149") , //7  bankq 149 postgre
+		new ConnectionProperties(PGR_DRIVER, URL_PGR_LOCLHOST, "postgres", "012345", "localhost_pgr"),  //8
+		new ConnectionProperties(PGR_DRIVER, URL_PDV, "pdv", "pdv", "plovdivtest"),  //9
+		new ConnectionProperties(PGR_DRIVER, URL_TETVEN, "teteven", "12345", "teteven93"),  //10
+		new ConnectionProperties(PGR_DRIVER, URL_IUIS, "iuis", "iuis", "") ,      //11
+		new ConnectionProperties(PGR_DRIVER, URL_IUIS, "iuis", "iuis", "") ,      //12
+		new ConnectionProperties(PGR_DRIVER, "jdbc:postgresql://mig29.is-bg.net:5432/sozopol", "sofia2013", "12345", "") ,      //13
+		new ConnectionProperties(PGR_DRIVER, "jdbc:postgresql://localhost:5432/soft", "postgres", "012345", "") ,                //14
 		
 	};
 	
-	static ConnectionProperties pr = dBases[0];
+	static ConnectionProperties pr = dBases[14];
 	
 	public static ConnectionProperties getConnectionProp(){
 		return pr;
