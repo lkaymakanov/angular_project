@@ -9,6 +9,9 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class ReservationService {
+  loadUnpaidReservations(userId: number): Observable<IReservation[]> {
+   return this.http.get<IReservation[]>(this.getMainPath() + '/unpaid/user/' + userId);
+  }
 
   
   makeReservation(r: IReservation) :Observable<any> {
@@ -32,7 +35,10 @@ export class ReservationService {
     return this.http.get<IReservation[]>(this.getMainPath() + '/user/' +userId);
   }
 
+  
 
-
+  loadUnPaidReserVations (userId: number):Observable<IReservation[]>{
+    return this.http.get<IReservation[]>(this.getMainPath() + 'unpaid/user/' +userId);
+  }
 
 }

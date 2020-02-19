@@ -5,8 +5,7 @@
 export const environment = {
   production: false,
   apiEndPoint:'http://localhost:9999',
-  debug:true
-
+  debug:false
 };
 
 /*

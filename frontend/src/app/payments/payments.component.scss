@@ -1,0 +1,35 @@
+.formInput{
+  height: 25px;
+
+}
+
+.cards {
+  float: right;
+}
+
+.caption{
+    font-weight: bold;
+   // font-size: large;
+}
+
+div.cards img{
+    float: left;
+    max-height: 32px;
+    margin-right: 5px ;
+}
+
+
+img.paycardbtn{
+    cursor: pointer;
+    margin: 5px;
+    border:solid 1px;
+    max-height: 32px;
+}
+
+
+div.selproc{
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid green ;
+    margin-bottom: 5px;
+}

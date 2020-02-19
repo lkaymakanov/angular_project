@@ -27,7 +27,10 @@ export class ReservationsComponent extends ComponentBase  implements OnInit {
   @ViewChild("inpitSearch", {static:true}) input: ElementRef;
   display:string;
 
-  constructor( private userSer:UserService, private resService:ReservationService, private procService:ProcedureService) {
+  constructor( private userSer:UserService, 
+    private resService:ReservationService, 
+    private procService:ProcedureService) {
+      
     super(userSer);
     this.display = 'none';
   }
@@ -76,7 +79,7 @@ export class ReservationsComponent extends ComponentBase  implements OnInit {
   confirmReservation(){
     //submit reservation
     let p:IProcedure ={id:this.selprocedure.id,name:this.selprocedure.name,price:0,servicegroupid: this.selprocedure.servicegroupid};
-    let r: IReservation= {id:-1, procedure:p, reservationdate:new Date(), reservationfor : new Date(),userid:this.curUser.id };
+    let r: IReservation= {id:0, procedure:p, reservationdate:new Date(), reservationfor : new Date(),userid:this.curUser.id };
     this.resService.makeReservation(r).subscribe(
       (el)=>{
         this.display = 'none';
