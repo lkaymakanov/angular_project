@@ -9,6 +9,14 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class ReservationService {
+
+
+  private main:string = '/reservation';
+   
+  constructor(private http:HttpClient ) { 
+
+  }
+
   loadUnpaidReservations(userId: number): Observable<IReservation[]> {
    return this.http.get<IReservation[]>(this.getMainPath() + '/unpaid/user/' + userId);
   }
@@ -20,16 +28,13 @@ export class ReservationService {
 
 
 
-  private main:string = '/reservation';
-   
+ 
 
   private getMainPath(){
     return environment.apiEndPoint + this.main;
   }
 
-  constructor(private http:HttpClient ) { 
-
-  }
+  
 
   loadReserVations (userId: number):Observable<IReservation[]>{
     return this.http.get<IReservation[]>(this.getMainPath() + '/user/' +userId);

@@ -6,6 +6,11 @@
         {{r.reservationdate | date : 'dd.MM.yyyy' }}
     </div>
 
+    
+    <!--succesful payments-->
+    <div *ngFor="let p of (payments$ | async)">
+        {{p| json}}
+    </div>
 
     <div class="container">
         <div class="row">
@@ -18,7 +23,25 @@
       
     <div>
         Selected reservation:
-       
+    </div>
+</div>
+
+<!--my payments panel-->
+<div class="panel panel-default contact">
+    <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> MY Payments </div ></div>
+    <div class="panel-body">
+     <table class="restable" border="1">
+        <tr>
+            <th>Date</th>
+            <th>Sum</th>
+            <th>Card Number</th>
+        </tr>
+        <tr  *ngFor="let p of (payments$ | async)">
+            <td>{{p.paytime | date : 'dd.MM.yyyy:HH:mm:ss' }}</td>
+            <td>{{p.sum}} lv.</td>
+            <td>{{p.paycardid }}</td>
+        </tr>
+    </table>
     </div>
 </div>
 
@@ -32,10 +55,10 @@
             <th>Reservation Date</th>
             <th>Procedure</th>
             <th>Procedure Date</th>
-
+            <th>Pay</th>
         </tr>
         <tr  *ngFor="let r of (unpaidReservations$ | async)">
-           <td>{{r.reservationdate | date : 'dd.MM.yyyy' }}</td>
+           <td>{{r.reservationdate | date : 'dd.MM.yyyy:HH:mm:ss' }}</td>
             <td>{{r.procedure.name}}</td>
             <td>{{r.reservationfor | date : 'dd.MM.yyyy:HH:mm'  }}</td>
             <td><img (click)="selectReservation(r)"  class="paycardbtn" src="../../assets/cards/visa.png"></td>
@@ -44,7 +67,7 @@
     </div>
 </div>
 
-<!--payment pamenel-->
+<!-- make new payment panel-->
 <div *ngIf="!!selReservationToPay" class="panel panel-default contact">
     <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> 
         <button class="bgcolor" (click)="makePayment()">New Payment</button>
@@ -60,6 +83,7 @@
 
 
     <div   class="panel-body">
+        <!--selected procedure for payment-->
         <div class="selproc" > 
               <span>Date:</span> <span> {{selReservationToPay.reservationdate | date : 'dd.MM.yyyy' }} </span>  
               <span>Procedure:</span> <span> {{selReservationToPay.procedure.name}} </span>  

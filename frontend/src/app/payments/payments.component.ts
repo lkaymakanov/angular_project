@@ -15,22 +15,30 @@ import { IPayment } from '../core/interfaces/IPayment';
 export class PaymentsComponent extends ComponentBase implements OnInit {
 
 
-  //load unpaid reservation
+  //unpaid reservation
   unpaidReservations$: Observable<IReservation[]>;
+  //payments made
+  payments$ : Observable<IPayment[]>;
+
+  //selected reservation for paying
   selReservationToPay : IReservation;
-  display:string;
+
   
 
   constructor(private userSer:UserService, 
     private resService:ReservationService, 
     private payservice:PaymentService) {
       super(userSer);
-      this.display = 'none';
+      
   }
   ngOnInit() {
-    
-    this.display = 'none';
     this.loadUnpaidReservations();
+    this.loadPayments();
+  }
+
+  
+  loadPayments(){
+    this.payments$ = this.payservice.loadPayments(this.curUser.id);
   }
 
 
@@ -44,14 +52,11 @@ export class PaymentsComponent extends ComponentBase implements OnInit {
      this.selReservationToPay = reservation;
   }
 
-  //show panel for new reservation
-  makePayment(){
-    this.display = 'block';
-   
-  }
+ 
 
+ 
   cancelPayment(){
-    this.display = 'none';
+    
     this.selReservationToPay = null;
     //console.log('cancelPayment...');
   }
@@ -69,8 +74,10 @@ export class PaymentsComponent extends ComponentBase implements OnInit {
     this.payservice.confirmPayment(newPayment)
     .subscribe(
       (el)=>{
-        this.display = 'none';
         this.selReservationToPay = null;
+      },()=>
+      {
+        //error on paying
       }
     );
   
