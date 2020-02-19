@@ -1,4 +1,4 @@
-<p>payments works!</p>
+
 
 <div *ngIf="isDebug">
     <div  *ngFor="let r of (unpaidReservations$ | async)">
@@ -20,105 +20,139 @@
             </div>
         </div>
     </div>
+
+
       
     <div>
         Selected reservation:
     </div>
 </div>
 
-<!--my payments panel-->
-<div class="panel panel-default contact">
-    <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> MY Payments </div ></div>
-    <div class="panel-body">
-     <table class="restable" border="1">
-        <tr>
-            <th>Date</th>
-            <th>Sum</th>
-            <th>Card Number</th>
-        </tr>
-        <tr  *ngFor="let p of (payments$ | async)">
-            <td>{{p.paytime | date : 'dd.MM.yyyy:HH:mm:ss' }}</td>
-            <td>{{p.sum}} lv.</td>
-            <td>{{p.paycardid }}</td>
-        </tr>
-    </table>
-    </div>
-</div>
-
-
-<!-- unpaid  reservations panel-->
-<div class="panel panel-default contact">
-    <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> MY reservations </div ></div>
-    <div class="panel-body">
-     <table class="restable" border="1">
-        <tr>
-            <th>Reservation Date</th>
-            <th>Procedure</th>
-            <th>Procedure Date</th>
-            <th>Pay</th>
-        </tr>
-        <tr  *ngFor="let r of (unpaidReservations$ | async)">
-           <td>{{r.reservationdate | date : 'dd.MM.yyyy:HH:mm:ss' }}</td>
-            <td>{{r.procedure.name}}</td>
-            <td>{{r.reservationfor | date : 'dd.MM.yyyy:HH:mm'  }}</td>
-            <td><img (click)="selectReservation(r)"  class="paycardbtn" src="../../assets/cards/visa.png"></td>
-        </tr>
-    </table>
-    </div>
-</div>
-
-<!-- make new payment panel-->
-<div *ngIf="!!selReservationToPay" class="panel panel-default contact">
-    <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> 
-        <button class="bgcolor" (click)="makePayment()">New Payment</button>
-        <div class="cards">
-           <!--cards panel-->
-            <img src="../../assets/cards/bcard.png">
-            <img src="../../assets/cards/master.png">
-            <img src="../../assets/cards/pbuy.png">
-            <img src="../../assets/cards/visa.png">
-        </div>
-    </div ></div>
-    
-
-
-    <div   class="panel-body">
-        <!--selected procedure for payment-->
-        <div class="selproc" > 
-              <span>Date:</span> <span> {{selReservationToPay.reservationdate | date : 'dd.MM.yyyy' }} </span>  
-              <span>Procedure:</span> <span> {{selReservationToPay.procedure.name}} </span>  
-        </div>
-
-        <form #cardForm="ngForm" (ngSubmit)="confirmPayment(cardForm.value)" action="updateCardDetails" target="_self" id="cardForm" class="form">
-            <div class="clearfix">
-                <span>
-                <div class="clearfix"><span class="caption"><label for="cardTypeId">Type Card</label><span style="color: red"> *</span></span>
-                <span class="value">
-                <select #cardNoInput ngModel name="cardType" id="cardTypeId"  class="formInput required" name="cardTypeId">
-                    <option value="">----</option>
-                    <option value="1">VISA</option>
-                    <option value="2">MasterCard</option>
-                    <option value="6">Maestro</option>
-                    <option value="9">Bcard</option>
-                    <option value="8">Diners Club/Discover</option>
-                    <option value="5">BORICA</option>
-                </select></span></div>		
-                <div class="clearfix"><span class="caption"><label for="cardPan">Card number</label><span style="color: red"> *</span></span><span class="value">
-                <input #cardNoInput   required pattern="[0-9]" type="text" ngModel name="cardNo" size="19" maxlength="19" id="cardNo" ></span></div>		
-                <p class="error-msg" *ngIf="cardNoInput?.errors?.pattern && cardNoInput.touched">Please enter valid card number!</p>					
-                <div class="clearfix"><span class="caption">
-                        <label for="cardExpDate">Валидна до</label><span style="color: red"> *</span></span><span class="value">
-                        <input type="text" name="cardExpDate" size="5" maxlength="5" id="cardExpDate" class="formInput required cardExpDateInput" autocomplete="OFF"><span class="hint">&nbsp;(ММ/ГГ)</span></span></div>
-                <div class="clearfix"><span class="caption"><label for="cvv2">CVV2/CVC2&nbsp;&nbsp;&nbsp;</label></span><span class="value"><input type="text" name="cvv2" size="3" maxlength="3" id="cvv2" class="formInput cvv2Input" autocomplete="OFF"><span class="hint">&nbsp;Последните 3 цифри от номера, изписан в полето за подпис на Вашата карта</span></span></div>
-                </span>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <!--my payments panel-->
+            <div class="panel panel-default contact">
+                <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> MY Payments </div ></div>
+                <div class="panel-body">
+                <table class="restable" border="1">
+                    <tr>
+                        <th>Date</th>
+                        <th>Sum</th>
+                        <th>Card Number</th>
+                    </tr>
+                    <tr  *ngFor="let p of (payments$ | async)">
+                        <td>{{p.paytime | date : 'dd.MM.yyyy:HH:mm:ss' }}</td>
+                        <td class="txtright">{{p.sum}} lv.</td>
+                        <td class="txtright">{{p.paycardid }}</td>
+                    </tr>
+                </table>
+                </div>
             </div>
-
-            <div class="rightButtons">
-                <button  type="submit" role="button" class="btnmain bgcolor btn  btn-success"><span >Confirm </span></button>
-                
-                <button (click)="cancelPayment()" class="btnmain bgcolor btn  btn-success"  type="reset" role="button" aria-disabled="false"><span >Cancel</span></button> 
-            </div>
-        </form>
-
+        <!-- end of payments panel -->
+        </div>
     </div>
 </div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6">
+           <!-- unpaid  reservations panel-->
+            <div class="panel panel-default contact">
+                <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> MY reservations </div ></div>
+                <div class="panel-body">
+                <table class="restable" border="1">
+                    <tr>
+                        <th>Reservation Date</th>
+                        <th>Procedure</th>
+                        <th>Procedure Date</th>
+                        <th>Pay</th>
+                    </tr>
+                    <tr  *ngFor="let r of (unpaidReservations$ | async)">
+                    <td>{{r.reservationdate | date : 'dd.MM.yyyy:HH:mm:ss' }}</td>
+                        <td>{{r.procedure.name}}</td>
+                        <td>{{r.reservationfor | date : 'dd.MM.yyyy:HH:mm'  }}</td>
+                        <td><img (click)="selectReservation(r)"  class="paycardbtn" src="../../assets/cards/visa.png"></td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+            <!--end of unpaid obl panel-->
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <!-- make new payment panel-->
+                    <div *ngIf="!!selReservationToPay" class="panel panel-default contact">
+                        <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> 
+                            <button class="bgcolor" (click)="makePayment()">New Payment</button>
+                            <div class="cards">
+                            <!--cards panel-->
+                                <img src="../../assets/cards/bcard.png">
+                                <img src="../../assets/cards/master.png">
+                                <img src="../../assets/cards/pbuy.png">
+                                <img src="../../assets/cards/visa.png">
+                            </div>
+                        </div ></div>
+                        
+
+
+                        <div   class="panel-body">
+                            <!--selected procedure for payment-->
+                            <div class="selproc" > 
+                                <span>Date:</span> <span> {{selReservationToPay.reservationdate | date : 'dd.MM.yyyy' }} </span>  
+                                <span>Procedure:</span> <span> {{selReservationToPay.procedure.name}} </span>  
+                            </div>
+
+                            <form #cardForm="ngForm" (ngSubmit)="confirmPayment(cardForm.value)" action="updateCardDetails" target="_self" id="cardForm" class="form">
+                                <div class="clearfix">
+                                    <span>
+                                    <div class="clearfix"><span class="caption"><label for="cardTypeId">Type Card</label><span style="color: red"> *</span></span>
+                                    <span class="value">
+                                    <select #cardNoInput ngModel name="cardType" id="cardTypeId"  class="formInput required" name="cardTypeId">
+                                        <option value="">----</option>
+                                        <option value="1">VISA</option>
+                                        <option value="2">MasterCard</option>
+                                        <option value="6">Maestro</option>
+                                        <option value="9">Bcard</option>
+                                        <option value="8">Diners Club/Discover</option>
+                                        <option value="5">BORICA</option>
+                                    </select></span></div>		
+                                    <div class="clearfix"><span class="caption"><label for="cardPan">Card number</label><span style="color: red"> *</span></span><span class="value">
+                                    <input #cardNoInput   required pattern="[0-9]" type="text" ngModel name="cardNo" size="19" maxlength="19" id="cardNo" ></span></div>		
+                                    <p class="error-msg" *ngIf="cardNoInput?.errors?.pattern && cardNoInput.touched">Please enter valid card number!</p>					
+                                    <div class="clearfix"><span class="caption">
+                                            <label for="cardExpDate">Валидна до</label><span style="color: red"> *</span></span><span class="value">
+                                            <input type="text" name="cardExpDate" size="5" maxlength="5" id="cardExpDate" class="formInput required cardExpDateInput" autocomplete="OFF"><span class="hint">&nbsp;(ММ/ГГ)</span></span></div>
+                                    <div class="clearfix"><span class="caption"><label for="cvv2">CVV2/CVC2&nbsp;&nbsp;&nbsp;</label></span><span class="value"><input type="text" name="cvv2" size="3" maxlength="3" id="cvv2" class="formInput cvv2Input" autocomplete="OFF"><span class="hint">&nbsp;Последните 3 цифри от номера, изписан в полето за подпис на Вашата карта</span></span></div>
+                                    </span>
+                                </div>
+
+                                <div class="rightButtons">
+                                    <button  type="submit" role="button" class="btnmain bgcolor btn  btn-success"><span >Confirm </span></button>
+                                    
+                                    <button (click)="cancelPayment()" class="btnmain bgcolor btn  btn-success"  type="reset" role="button" aria-disabled="false"><span >Cancel</span></button> 
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <!-- end of make payment panel -->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

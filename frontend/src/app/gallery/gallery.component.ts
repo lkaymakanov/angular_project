@@ -27,13 +27,12 @@ export class GalleryComponent implements OnInit {
    }
 
   ngOnInit() {
-    //forEach(element => console.log(element));
     this.images.forEach(
       (el)=>{
         el.imgsrc = this.parentFolder + el.imgsrc;
       }
     );
-    //console.log(this.modimages);
+
   }
 
 

@@ -24,6 +24,7 @@ img.paycardbtn{
     margin: 5px;
     border:solid 1px;
     max-height: 32px;
+    float: right;
 }
 
 table.restable th{
@@ -32,6 +33,10 @@ table.restable th{
 
 table.restable{
   width: 100%;
+}
+
+.txtright{
+  text-align: right;
 }
 
 
