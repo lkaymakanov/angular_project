@@ -1,14 +1,14 @@
  package  net.is_bg.ltf.businessmodels.softuni.service;
 
- 
  import java.sql.ResultSet;
  import java.sql.SQLException;
  import net.is_bg.ltf.db.common.paging.SelectPagingSqlStatement;
  
- public class ServiceSelect  extends SelectPagingSqlStatement<Service>{
+    public class ServiceSelect  extends SelectPagingSqlStatement<Service>{
  	
- private long id = 0;
- private long groupId = 0;
+    private long id = 0;
+    private long groupId = 0;
+    private String name;
  	private  ServiceSelect() {
  		
  	}
@@ -38,6 +38,7 @@
  		String sql = " select   service_id,name,service_group_id,price from service where 1=1";
         sql+= (id > 0 ? " and service_id = " + id : ""); 
         if(groupId > 0) { sql+=" and service_group_id = ? "; bindVarData.setLong(groupId); }
+        if(name !=null) {sql += " and upper(name) like '%" + name.toUpperCase() + "%'";}
  		return super.rtnSqlString(sql);
  	}
  	
@@ -59,6 +60,13 @@
 	public static ServiceSelect getGroupSelect(long groupid) {
 		ServiceSelect s = new  ServiceSelect();
 		s.groupId = groupid;
+		return s;
+	}
+
+
+	public static ServiceSelect getNameSelect(String name) {
+		ServiceSelect s = new  ServiceSelect();
+		s.name = name;
 		return s;
 	}
  }

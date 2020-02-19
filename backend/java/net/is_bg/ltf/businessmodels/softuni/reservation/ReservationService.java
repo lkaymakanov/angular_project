@@ -47,4 +47,11 @@ import java.util.List;
   		ex.execute(db);
   		return db.getResult();
   	}
+
+	public List<Reservation> unpaidforUser(Long userId) {
+		 if(userId <=0) return new ArrayList<Reservation>();
+  		ReservationSelect db = ReservationSelect.getUnpaidSelectForUser(userId);
+  		ex.execute(db);
+  		return db.getResult();
+	}
  }

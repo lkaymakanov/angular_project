@@ -3,7 +3,8 @@
  
  import java.util.List;
  import org.springframework.web.bind.annotation.GetMapping;
- import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
  import org.springframework.web.bind.annotation.RestController;
  import com.example.demo.AppConstants;
  import controller.IController;
@@ -40,6 +41,12 @@
  		//System.out.println("entered in update");
  		service.update(obj, id);
  		return obj;
+ 	}
+ 	
+ 	@GetMapping(MAIN_PATH + "/user"+AppConstants.ID_PATH_PARAM)
+ 	public List<Payment> forUser(@PathVariable  Long id) {
+ 		//System.out.println("Entered in find...");
+ 		return service.forUser(id);
  	}
  
  	@GetMapping(MAIN_PATH)

@@ -45,4 +45,10 @@ package  net.is_bg.ltf.businessmodels.softuni.service;
  		ex.execute(db);
  		return db.getResult();
  	}
+
+	public List<Service> getForName(String s) {
+		ServiceSelect db = ServiceSelect.getNameSelect(s);
+ 		ex.execute(db);
+ 		return db.getResult();
+	}
  }

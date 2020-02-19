@@ -1,7 +1,8 @@
 package  net.is_bg.ltf.businessmodels.softuni.payment;
 
  
- import java.util.List;
+ import java.util.ArrayList;
+import java.util.List;
  import net.is_bg.ltf.db.common.DBConfig;
  import net.is_bg.ltf.db.common.DBExecutor;
  
@@ -38,4 +39,11 @@ package  net.is_bg.ltf.businessmodels.softuni.payment;
  		ex.execute(db);
  		return db.getResult();
  	}
+
+	public List<Payment> forUser(Long userId) {
+		if(userId <=0) return new ArrayList<Payment>(); 
+	 	PaymentSelect db = PaymentSelect.getUserPaymentSelect(userId);
+	 	ex.execute(db);
+	 	return db.getResult();
+	}
  }

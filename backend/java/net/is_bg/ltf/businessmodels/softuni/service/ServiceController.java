@@ -5,7 +5,8 @@
  import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
- import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
  import com.example.demo.AppConstants;
  import controller.IController;
  
@@ -47,6 +48,13 @@ import org.springframework.web.bind.annotation.PostMapping;
  	public List<Service> getForGroupId(@PathVariable Long id) {
  		//System.out.println("entered in update");
  		return service.forGroup(id);
+ 	}
+ 	
+ 	//@RequestParam(value = "page", defaultValue = "1")
+ 	@GetMapping(MAIN_PATH + "/selectByName")
+ 	public List<Service> getForName(@RequestParam(value = "name", defaultValue = "") String name){
+ 		return service.getForName(name);
+ 		//return null;
  	}
  
  	@GetMapping(MAIN_PATH)

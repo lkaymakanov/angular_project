@@ -59,9 +59,11 @@ import net.is_bg.ltf.businessmodels.softuni.service.Service;
  		return service.forUser(id);
  	}
  	
- 	/*@GetMapping(MAIN_PATH + "/group" +  AppConstants.ID_PATH_PARAM)
- 	//@GetMapping(MAIN_PATH+"/user"+ AppConstants.ID_PATH_PARAM)
- 	public List<Reservation> forUser(@PathVariable Long userId) {
- 		return service.forUser(userId);
- 	}*/
+ 	@GetMapping(MAIN_PATH + "/unpaid/user" +  AppConstants.ID_PATH_PARAM)
+ 	public List<Reservation> unpaidforUser(@PathVariable Long id) {
+ 		//System.out.println("entered in update");
+ 		return service.unpaidforUser(id);
+ 	}
+ 	
+ 	
  }

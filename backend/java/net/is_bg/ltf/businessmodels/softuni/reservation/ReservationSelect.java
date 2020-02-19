@@ -11,6 +11,10 @@ import net.is_bg.ltf.db.common.paging.SelectPagingSqlStatement;
  	
     private long id = 0;
     private long userId = 0;
+    private boolean unpaid = false;
+    private boolean selectPaidUnpaid=false;
+    
+    
  	private  ReservationSelect() {
  		
  	}
@@ -49,6 +53,8 @@ import net.is_bg.ltf.db.common.paging.SelectPagingSqlStatement;
  				+ "  reservationfor, s.name, s.price"
  				+ "    from reservation r "+
  				   " join service s on s.service_id = r.service_id   ";
+ 		if(userId > 0) { sql+=" and r.user_id =  "+userId;}
+ 		if(selectPaidUnpaid ) {sql+=" and " + (unpaid ? " not ": "" ) + " EXISTS (SELECT * from payment p where r.reservation_id = p.reservation_id )";}
         sql+= (id > 0 ? " where reservation_id = " + id : ""); 
  		return super.rtnSqlString(sql);
  	}
@@ -70,4 +76,12 @@ import net.is_bg.ltf.db.common.paging.SelectPagingSqlStatement;
  			result.add(model);
  		}
  	}
+
+
+	public static ReservationSelect getUnpaidSelectForUser(Long userId2) {
+		ReservationSelect sel = new ReservationSelect();
+		sel.selectPaidUnpaid = true;
+		sel.unpaid =true;
+		return sel;
+	}
  }
