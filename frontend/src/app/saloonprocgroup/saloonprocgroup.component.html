@@ -1,6 +1,6 @@
 
 
-<div  *ngFor="let g of procGroups">
+<div  *ngFor="let g of (procGroups$ | async)">
     <div class="container">
         <div class="panel panel-default">
         <div class="bgcolor panel-heading">

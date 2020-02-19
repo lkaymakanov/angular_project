@@ -4,7 +4,7 @@
 {{stuff | json}}
 </ng-container>
 
-<div *ngFor="let s of stuff">
+<div *ngFor="let s of (stuff$ | async)">
     <div class="container">
         <div class="panel panel-default">
         <div class="bgcolor panel-heading">

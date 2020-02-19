@@ -2,12 +2,12 @@
 <!--represents details procedures for each procedure group!-->
 <div class="container">
     <div class="row">
-      <div *ngFor="let s of procedures ">
+      <div *ngFor="let s of (procedures$ | async) ">
             <div class="container-fluid">
                 <div  class="row procrow ">
                     <div class="col-md-10 procname"> {{s.name}}</div>
                     <div class="price"> {{s.price}} lv.</div>
                 </div>
-            </div>  
+        </div>  
     </div>
 </div>

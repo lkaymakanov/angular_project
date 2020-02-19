@@ -8,7 +8,9 @@ import { IProcedure } from './core/interfaces/IProcedure';
 @Injectable({
   providedIn: 'root'
 })
+//service that loads saloon procedures
 export class ProcedureService {
+  
 
   private main:string = '/service';
  
@@ -17,7 +19,7 @@ export class ProcedureService {
     return environment.apiEndPoint + this.main;
   }
   constructor(private http:HttpClient) {}
-
+ 
   
   /**Load procedure fo procdeure group */
   loadProcForGroup(groupid:number) :Observable<IProcedure[]>{
@@ -27,6 +29,12 @@ export class ProcedureService {
   }
   
 
-
+  /**search procedure by proc name... */
+  loadProcByName(procname: string):Observable<IProcedure[]>{
+    //throw new Error("Method not implemented.");
+    let path = this.getMainPath();
+    path = path +'/selectByName?name='+ procname ;
+    return this.http.get<IProcedure[]>(path);
+  }
 
 }

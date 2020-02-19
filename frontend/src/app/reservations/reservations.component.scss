@@ -1,0 +1,50 @@
+div.hide{
+    display: none;
+}
+
+
+div.show{
+    display: block;
+}
+
+
+img.confirm{
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+
+table.srch tr td{
+    padding: 6px !important;
+}
+
+table.srch tr td.price{
+    font-weight: bold;
+}
+
+table.srch tr:hover{
+    color:white;
+    background-color: #35224a !important;
+
+}
+
+.restable tr td{
+    padding: 10px !important;
+
+}
+
+.restable th{
+    font-weight: large;
+    font-size: 15px;
+    
+}
+table.srch{
+    font-size: large;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.aright{
+    text-align:right;
+}

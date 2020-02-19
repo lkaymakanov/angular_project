@@ -1,9 +1,10 @@
+import { IProcedure } from './IProcedure';
 
 
 export interface  IReservation{
 	id:number,
 	reservationdate:Date ,
-	serviceid:number,
+	procedure:IProcedure,
 	userid:number,
 	reservationfor:Date 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { StuffService } from '../stuff.service';
 import { IStuff } from '../core/interfaces/IStuff';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-stuff',
@@ -11,7 +12,7 @@ import { IStuff } from '../core/interfaces/IStuff';
 export class StuffComponent implements OnInit {
 
   //stuff to be loaded
-  stuff : IStuff[];
+  stuff$ : Observable< IStuff[]>;
 
 
   constructor(private stuffserivce:StuffService) {
@@ -24,17 +25,9 @@ export class StuffComponent implements OnInit {
   }
 
   
-  ngOnInit() {
-    //console.log('entered in load stuff');
-
-    //load stuff 
-    this.stuffserivce.loadStuff().subscribe(
-        (el)=>{
-        this.stuff = el;
-      },()=>{
-        this.stuff = null;
-      }
-    );
+  ngOnInit() { 
+   //load stuff 
+    this.stuff$ = this.stuffserivce.loadStuff();
     
   }
 

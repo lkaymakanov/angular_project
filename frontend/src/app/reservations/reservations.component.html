@@ -1,10 +1,124 @@
 <p>reservations works!</p>
 
+<div *ngIf="isDebug">
+        <div  *ngFor="let r of (reservations$ | async)">
+            {{r | json}}
+            {{r.reservationdate | date : 'dd.MM.yyyy' }}
+        </div>
 
-<div  *ngFor="let r of reservations">
-    {{r | json}}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class='col-sm-6'>
+                    
+                </div>
+            </div>
+        </div>
+            {{display}}  {{selprocedure | json}}
 </div>
 
+<!--My reservations-->
+<div class="panel panel-default contact">
+    <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> MY reservations </div ></div>
+    <div class="panel-body">
+     <table class="restable" border="1">
+        <tr>
+            <th>Reservation Date</th>
+            <th>Procedure</th>
+            <th>Procedure Date</th>
+        </tr>
+        <tr  *ngFor="let r of (reservations$ | async)">
+           <td>{{r.reservationdate | date : 'dd.MM.yyyy' }}</td>
+            <td>{{r.procedure.name}}</td>
+            <td>{{r.reservationfor | date : 'dd.MM.yyyy:HH:mm'  }}</td>
+        </tr>
+    </table>
+    </div>
+</div>
+
+
+
+
+<!--make new  reservation-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div>
+                <div class="container-fluid">
+                        <div class="row">
+                
+                            <div class=" panel panel-default contact" >
+                                <div class="panel-heading bgcolor color:white;">
+                                <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> 
+                                    <button  class="btnmain bgcolor  btn btn-success" (click)="makeReservation()">Make Reservation</button>
+                                </div >
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                    
+                
+                <div [style.display]="display">
+                    <table>
+                        <tr *ngIf="!!selprocedure">
+                            <td>{{selprocedure.name}}</td>
+                            <td></td>
+                            <td><button class="btnmain   btn btn-success" (click)="cancelReservation()">Cancel Reservation</button></td>
+                            <td><button class="btnmain   btn btn-success" (click)="confirmReservation()">Confirm Reservation</button></td>
+                        </tr>
+                        <tr>
+                            <td><input #inpitSearch style=" width:500px" ></td>
+                        </tr>
+                    </table>
+                
+                
+                    <table class="srch" style="width: 500px;">
+                        <tr></tr>
+                    <tr *ngFor="let s of (procedures$ | async) ">
+                        <td>{{s.name}} </td>    
+                        <td class="price aright">{{s.price}}lv.</td>
+                        <td class="aright"> <img class="confirm" src="../../assets/confirm.png" (click)="selectProc(s)" /></td>
+                        </tr>  
+                    </table>
+                
+                </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+</div>
+
+   
+   
+
+<!-- test panel
+<div class="panel panel-default contact">
+    <div class="panel-heading bgcolor"> <div  style="color:white;" class="stuffheader bgcolor"> <span  style="color:white;" class="caret"> </span> MY reservations </div ></div>
+    <div class="panel-body">Panel Content</div>
+</div>
+-->
+    
+    <!--
+
+        <div  class="row">
+                    <div class="col-md-8 procname"> {{s.name}}</div>
+                    <div class=""> {{s.price}} lv.</div>
+                    <div class="col-sm-1">
+                        <button (click)="selectProc(s)" > Select Proc</button>
+                    </div>
+    -->
+
+
+<!--
+export interface  IReservation{
+	id:number,
+	reservationdate:Date ,
+	serviceid:number,
+	userid:number,
+	reservationfor:Date 
+}
+-->
 <!--
 <div class="container">
     <div class="row">

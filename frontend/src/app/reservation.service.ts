@@ -10,6 +10,11 @@ import { UserService } from './user.service';
 })
 export class ReservationService {
 
+  
+  makeReservation(r: IReservation) :Observable<any> {
+    return this.http.post(this.getMainPath() + '/create', r);
+  }
+
 
 
   private main:string = '/reservation';

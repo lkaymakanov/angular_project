@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProcedureService } from '../procedure.service';
 import { IProcdeureGroup } from '../core/interfaces/IProcedureGroup';
 import { IProcedure } from '../core/interfaces/IProcedure';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-saloonproc',
@@ -14,17 +15,10 @@ export class SaloonprocComponent implements OnInit {
   constructor(private service:ProcedureService) { }
 
   @Input('group') group : IProcdeureGroup;
-  procedures: IProcedure[];
-
+  procedures$:Observable<IProcedure[]>;
+  
   
   ngOnInit() {
-   // if(!!this.group)
-    this.service.loadProcForGroup(this.group.id).subscribe(
-        (el)=>{
-          console.log('loaded ' + this.group.id);
-          this.procedures = el;
-        }
-    );
+    this.procedures$ = this.service.loadProcForGroup(this.group.id);
   }
-
 }
